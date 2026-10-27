@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Public_Sans } from "next/font/google";
+import { Noto_Serif } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ReactLenis } from "lenis/react";
 
-const publicSans = Public_Sans({ subsets: ['latin'], variable: '--font-sans' });
+const Antic = Noto_Serif({ subsets: ["latin"], weight: ["400"], variable: "--font-oranienbaum" });
 
 
 export const metadata: Metadata = {
@@ -15,9 +16,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", "font-sans", publicSans.variable)}
+      className={cn("h-full", "antialiased", Antic.className)}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <ReactLenis root>
+        <body className="min-h-full flex flex-col overflow-x-hidden tracking-wider">
+          {children}
+        </body>
+      </ReactLenis>
     </html>
   );
 }

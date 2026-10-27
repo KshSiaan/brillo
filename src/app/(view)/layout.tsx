@@ -1,10 +1,6 @@
 
-import React from 'react'
-import { ReactLenis } from 'lenis/react'
-export default function layout({ children }: { children: React.ReactNode }) {
-    return (
-        <ReactLenis>
-            {children}
-        </ReactLenis>
-    )
+import type { ReactNode } from "react"
+
+export default function Layout({ children }: { children: ReactNode }) {
+    return <>{children}</>
 }
