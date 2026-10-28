@@ -25,9 +25,9 @@ export default function Page() {
                 <Product />
                 <Description />
             </main>
-            <footer className="h-32 sm:h-50">
+            {/* <footer className="h-32 sm:h-50">
 
-            </footer>
+            </footer> */}
         </>
     )
 }
