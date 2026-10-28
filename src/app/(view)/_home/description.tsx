@@ -2,7 +2,6 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import React from 'react'
 import QRCode from 'react-qr-code'
 
 
@@ -50,15 +49,15 @@ const moreDetails = [
 export default function Description() {
 
     return (
-        <section className="p-6 space-y-4">
-            <p className="text-muted-foreground uppercase tracking-widest">Description de la pieza</p>
-            <h2 className="text-primary text-4xl!">Anillo Solitario</h2>
+        <section className="space-y-4 p-4 sm:p-6 lg:p-10">
+            <p className="uppercase tracking-widest text-muted-foreground">Description de la pieza</p>
+            <h2 className="text-3xl! text-primary sm:text-4xl!">Anillo Solitario</h2>
             <p className="text-gray-600 uppercase">BC-2026-0001</p>
 
-            <div className="grid grid-cols-2 gap-4 mt-12">
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2">
                 {
                     details.map((detail, index) => (
-                        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                        // biome-ignore lint/suspicious/noArrayIndexKey: static display data
                         <div key={index} className="flex flex-col">
                             <span className="text-gray-500 uppercase text-sm">{detail.label}</span>
                             <span className="text-primary text-xl font-bold">{detail.value}</span>
@@ -68,13 +67,13 @@ export default function Description() {
             </div>
             <Separator className="my-8" />
 
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
                 <div className="border p-4">
-                    <QRCode value="https://example.com" className="size-50" />
+                    <QRCode value="https://example.com" className="size-40 sm:size-50" />
                 </div>
-                <div className="flex-1 space-x-0 space-y-4">
+                <div className="w-full min-w-0 flex-1 space-x-0 space-y-4">
                     <p className="text-gray-500 uppercase text-sm">HASH BLOCKCHAIN</p>
-                    <div className="p-4 bg-muted w-full">
+                    <div className="w-full break-all bg-muted p-4 font-mono text-sm">
                         0x7f3a9b2e1c8d4f6a<br />
                         5e0c3b7d9f2a8e4c <br />
                         1b6d0f3a7c9e2b5d
@@ -93,23 +92,23 @@ export default function Description() {
                 </div>
             </div>
             <div className="p-4 text-center text-lg bg-primary text-white">VERIFICAR EN BLOCKCHAIN</div>
-            <div className="grid grid-cols-3 gap-4">
-                <Button variant="outline" size="lg">DESCAGAR PDF</Button>
-                <Button variant="outline" size="lg">COMPARTIR</Button>
-                <Button variant="outline" size="lg">WHATSAPP</Button>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <Button variant="outline" size="lg" className="w-full">DESCAGAR PDF</Button>
+                <Button variant="outline" size="lg" className="w-full">COMPARTIR</Button>
+                <Button variant="outline" size="lg" className="w-full">WHATSAPP</Button>
             </div>
 
             <Card className="border-border border ring-0">
-                <CardHeader className="flex items-center justify-between border-b">
+                <CardHeader className="flex flex-col items-start justify-between gap-3 border-b sm:flex-row sm:items-center">
                     <CardTitle className="font-normal">
                         PANEL DE EMISION
                     </CardTitle>
                     <Badge className="border border-border p-2 bg-muted text-muted-foreground">SOLO BRILLO COLOR</Badge>
                 </CardHeader>
-                <CardContent className="grid grid-cols-2 gap-4">
+                <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {
                         moreDetails.map((detail, index) => (
-                            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                            // biome-ignore lint/suspicious/noArrayIndexKey: static display data
                             <div key={index} className="flex flex-col">
                                 <span className="text-gray-500 uppercase text-sm">{detail.label}</span>
                                 <span className="text-primary text-xl border p-4 mt-2">{detail.value}</span>

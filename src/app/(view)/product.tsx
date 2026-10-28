@@ -1,8 +1,8 @@
 "use client"
-import React, { Suspense, useLayoutEffect } from 'react'
+import { Suspense, useLayoutEffect } from 'react'
 import * as THREE from 'three'
 import { Canvas, useThree } from '@react-three/fiber'
-import { Environment, Lightformer, useGLTF, OrbitControls, ContactShadows } from '@react-three/drei'
+import { Environment, useGLTF, OrbitControls, ContactShadows } from '@react-three/drei'
 import { toCreasedNormals } from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 import { EffectComposer, Bloom, SMAA } from '@react-three/postprocessing'
 import { Button } from '@/components/ui/button'
@@ -44,7 +44,7 @@ export default function Product() {
             <Canvas
                 dpr={[1, 2]}
                 camera={{ position: [0, 0, 5], fov: 35 }}
-                className="h-[70dvh]!"
+                className="h-[clamp(22rem,70dvh,44rem)]!"
                 gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.1 }}
             >
                 <color attach="background" args={['#00332A']} />
@@ -60,7 +60,7 @@ export default function Product() {
                     <SMAA />
                 </EffectComposer>
             </Canvas>
-            <div className="absolute bottom-4 right-6 space-x-2">
+            <div className="absolute bottom-4 right-4 flex gap-2 sm:right-6">
                 <Button size="icon" className="rounded-full">1</Button>
                 <Button size="icon" className="rounded-full">2</Button>
                 <Button size="icon" className="rounded-full">3</Button>
