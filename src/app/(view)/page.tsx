@@ -1,3 +1,4 @@
+import Description from "./_home/description"
 import Product from "./product"
 
 
@@ -18,9 +19,14 @@ export default function Page() {
                 <div className=" border px-4 py-2 border-primary text-primary! flex items-center gap-2">
                     <div className="size-2 rounded-full bg-primary " />Verificando</div>
             </header>
-            <main className="w-dvw min-h-dvh h-[300dvh]">
+            <main className="">
                 <Product />
-            </main></>
+                <Description />
+            </main>
+            <footer className="h-50">
+
+            </footer>
+        </>
     )
 }
 
