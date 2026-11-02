@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import Description from "./_home/description"
 import Product from "./product"
 
@@ -22,7 +23,15 @@ export default function Page() {
                 </div>
             </header>
             <main className="w-full">
-                <Product />
+                <div className="grid grid-cols-2">
+                    <Suspense fallback={<></>}>
+                        <Product src="/anillo.glb" />
+                    </Suspense>
+                    <Suspense fallback={<></>}>
+                        <Product src="/dije.glb" />
+                    </Suspense>
+                    {/* <Product /> */}
+                </div>
                 <Description />
             </main>
             {/* <footer className="h-32 sm:h-50">
