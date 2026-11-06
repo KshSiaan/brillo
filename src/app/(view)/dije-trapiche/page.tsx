@@ -1,6 +1,7 @@
 import { Suspense } from "react"
-import Description from "./_home/description"
-import Product from "./product"
+import Description from "../_home/description"
+import Product from "../product"
+import Image from "next/image"
 
 
 export default function Page() {
@@ -24,19 +25,12 @@ export default function Page() {
             </header>
             <main className="w-full">
                 <div className="grid grid-cols-2">
-                    <Suspense fallback={<></>}>
-                        <Product src="/anillo.glb" />
-                    </Suspense>
-                    <Suspense fallback={<></>}>
-                        <Product src="/dije.glb" />
-                    </Suspense>
-                    {/* <Product /> */}
+                    <Image src="/pieces/DSC_0435.jpg.jpeg" alt="Anillo" width={2000} height={2000} unoptimized className="object-cover w-full col-span-2" />
+                    <Image src="/pieces/DIJE TRAPICHE 1.jpg.jpeg" alt="Anillo" width={2000} height={2000} unoptimized className="object-cover w-full" />
+                    <Image src="/pieces/DIJE TRAPICHE 2.jpg.jpeg" alt="Anillo" width={2000} height={2000} unoptimized className="object-cover w-full" />
                 </div>
                 <Description />
             </main>
-            {/* <footer className="h-32 sm:h-50">
-
-            </footer> */}
         </>
     )
 }

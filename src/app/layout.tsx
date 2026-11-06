@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { Noto_Serif } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ReactLenis } from "lenis/react";
 
-const Antic = Noto_Serif({ subsets: ["latin"], weight: ["400"], variable: "--font-oranienbaum" });
-
+const Antic = Noto_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-oranienbaum",
+});
 
 export const metadata: Metadata = {
   title: "Brillo",
@@ -14,15 +16,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={cn("h-full", "antialiased", Antic.className)}
-    >
-      <ReactLenis root>
-        <body className="min-h-full flex flex-col overflow-x-hidden tracking-wider">
-          {children}
-        </body>
-      </ReactLenis>
+    <html lang="en" className={cn("h-full", "antialiased", Antic.className)}>
+      <body className="h-full overflow-x-hidden tracking-wider">
+        {/* <ReactLenis root> */}
+        {children}
+        {/* </ReactLenis> */}
+      </body>
     </html>
   );
 }

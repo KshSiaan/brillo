@@ -1,26 +1,45 @@
 "use client"
-import { Suspense, useLayoutEffect } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import * as THREE from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls, ContactShadows } from '@react-three/drei'
 
 import { EffectComposer, Bloom, SMAA } from '@react-three/postprocessing'
 import { Button } from '@/components/ui/button'
-import { Ring } from './ring'
+import RingModel from './ring-model'
+import { ringScenarios, type RingScenarioName } from './scenarios'
 
 
-export default function Product({ src }: { src: string }) {
+
+export default function Product({
+    src = "/anillo.glb",
+    position = "hero",
+}: {
+    src?: string
+    position?: RingScenarioName
+}) {
+    const [activeScenario, setActiveScenario] =
+        useState<RingScenarioName>(position)
+
+    useEffect(() => {
+        setActiveScenario(position)
+    }, [position])
+
+    const target =
+        ringScenarios.find((scenario) => scenario.name === activeScenario) ??
+        ringScenarios[0]
+
     return (
-        <div className="relative">
+        <div className="pointer-events-none fixed inset-0 z-0">
             <Canvas
                 dpr={[1, 2]}
                 camera={{ position: [0, 0, 5], fov: 35 }}
-                className="h-[clamp(22rem,70dvh,44rem)]!"
+                className="h-dvh!"
                 gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.1 }}
             >
                 <color attach="background" args={['#00332A']} />
                 <Suspense fallback={null}>
-                    <Ring src={src} />
+                    <RingModel src={src} target={target} />
                     <Environment resolution={1024} preset='warehouse'>
                     </Environment>
                     <ContactShadows position={[0, -1.2, 0]} opacity={0.5} blur={2.5} far={3} />
@@ -31,13 +50,6 @@ export default function Product({ src }: { src: string }) {
                     <SMAA />
                 </EffectComposer>
             </Canvas>
-            <div className="absolute bottom-4 right-4 flex gap-2 sm:right-6">
-                <Button size="icon" className="rounded-full">1</Button>
-                <Button size="icon" className="rounded-full">2</Button>
-                <Button size="icon" className="rounded-full">3</Button>
-
-            </div>
         </div>
     )
 }
-
