@@ -98,7 +98,7 @@ export default function Description() {
                 <Button variant="outline" size="lg" className="w-full">WHATSAPP</Button>
             </div>
 
-            <Card className="border-border border ring-0">
+            {/* <Card className="border-border border ring-0">
                 <CardHeader className="flex flex-col items-start justify-between gap-3 border-b sm:flex-row sm:items-center">
                     <CardTitle className="font-normal">
                         PANEL DE EMISION
@@ -117,7 +117,7 @@ export default function Description() {
                     }
 
                 </CardContent>
-            </Card>
+            </Card> */}
         </section>
     )
 }
